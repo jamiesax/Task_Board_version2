@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Sidebar from './components/Sidebar';
+import MainContent from './components/MainContent';
+import { useState } from 'react';
+import { tasks as initialTasks } from './data/task.js';
 
 function App() {
+  const [tasks, setTasks] = useState(initialTasks);
+  const [selectedTaskId, setSelectedTaskId] = useState(null);
+
+  function handleTaskSelect(taskId) {
+    setSelectedTaskId(taskId);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sidebar tasks = {tasks} onTaskSelect={handleTaskSelect} selectedTaskId={selectedTaskId} />
+      <MainContent />
     </div>
   );
 }
