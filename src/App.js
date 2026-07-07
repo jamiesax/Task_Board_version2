@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Sidebar tasks = {tasks} onTaskSelect={handleTaskSelect} selectedTaskId={selectedTaskId} />
-      <MainContent />
+      <MainContent tasks={tasks} selectedTaskId={selectedTaskId} />
     </div>
   );
 }

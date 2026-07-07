@@ -1,12 +1,12 @@
 import React from 'react';
 
-const TaskDetails = () => {
+const TaskDetails = ({ task }) => {
   return (
-    <>
-     <main>
-       TaskDetails
-     </main>
-    </>
+    <main>
+      <h1>{task.title}</h1>
+      <p>{task.description}</p>
+      <p><strong>Status:</strong> {task.status}</p>
+    </main>
   );
 };
 
