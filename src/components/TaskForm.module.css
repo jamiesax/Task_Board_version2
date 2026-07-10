@@ -1,0 +1,27 @@
+.form {
+  max-width: 700px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  padding: var(--space-6);
+
+  box-shadow: var(--shadow-sm);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-2);
+}
+
+
+

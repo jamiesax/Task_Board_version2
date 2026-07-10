@@ -1,8 +1,10 @@
 import TaskItem from "./TaskItem";
+import classes from "./TaskList.module.css";
 
 const TasksList = ({ tasks, onTaskSelect, selectedTaskId }) => {
+
   return (
-    <ul>
+    <ul className={classes.list}>
      {tasks.map(task => (
        <TaskItem
          key={task.id}

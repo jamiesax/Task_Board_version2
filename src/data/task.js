@@ -9,13 +9,13 @@ export const tasks = [
         id: 2,
         title: "Task 2",
         description: "Description for Task 2",
-        status: "processing"
+        status: "in-progress"
     },
     {
         id: 3,
         title: "Task 3",
         description: "Description for Task 3",
-        status: "finished"
+        status: "done"
     },
     {
         id: 4,

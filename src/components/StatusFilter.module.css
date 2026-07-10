@@ -1,0 +1,37 @@
+.filter {
+  width: 100%;
+}
+
+.filter select {
+  width: 100%;
+
+  padding: var(--space-3) var(--space-4);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.filter select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.filter label {
+  display: block;
+
+  margin-bottom: var(--space-2);
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+
+  color: var(--color-text-secondary);
+}
