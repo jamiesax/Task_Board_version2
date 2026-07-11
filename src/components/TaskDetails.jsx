@@ -1,4 +1,6 @@
 import classes from './TaskDetail.module.css';
+import Button from './UI/Button';
+import StatusBadge from './UI/StatusBadge';
 
 const TaskDetails = ({ task, onEdit, onDelete }) => {
   return (
@@ -6,9 +8,7 @@ const TaskDetails = ({ task, onEdit, onDelete }) => {
       <header className={classes.header}>
         <h1>{task.title}</h1>
 
-        <span className={`${classes.badge} ${classes[task.status]}`}>
-          {task.status}
-        </span>
+        <StatusBadge status={task.status} />
       </header>
 
       <div className={classes.description}>
@@ -17,13 +17,13 @@ const TaskDetails = ({ task, onEdit, onDelete }) => {
       </div>
 
       <div className={classes.actions}>
-        <button className="btn-primary" onClick={onEdit}>
+        <Button variant="primary" onClick={onEdit}>
           Edit
-        </button>
+        </Button>
 
-        <button className="btn-danger" onClick={() => onDelete(task.id)}>
+        <Button variant="danger" onClick={() => onDelete(task.id)}>
           Delete
-        </button>
+        </Button>
       </div>
     </section>
   );

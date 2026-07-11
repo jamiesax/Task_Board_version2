@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import classes from './TaskForm.module.css';
+import Button from './UI/Button';
 
 
 const initialFormData = {
@@ -8,7 +9,7 @@ const initialFormData = {
     status: "todo",
     };
 
-const TaskForm = ({ onSubmit, mode, task }) => {
+const TaskForm = ({ onSubmit, setMode, mode, task }) => {
         
   const [formData, setFormData] = useState(initialFormData);
 
@@ -35,36 +36,48 @@ const TaskForm = ({ onSubmit, mode, task }) => {
 
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
+      <h2 className={classes.title}>
+        {mode === "edit" ? "Edit Task" : "Create New Task"}
+      </h2>
+
       <div className={classes.field}>
-        <label>
-        Title:
+        <label htmlFor='Title'>Title</label>
+
         <input type="text" name="title" 
         required
         value={formData.title} onChange={handleChange} />
-      </label>
+      
       </div>
 
       <div className={classes.field}>
-        <label>
-        Description:
+        <label htmlFor='Description'>Description</label>
         <textarea name="description" value={formData.description} onChange={handleChange} required />
-      </label>
+      
       </div>
 
       <div className={classes.field}>
-        <label>
-        Status:
+        <label htmlFor='Status'>Status</label>
           <select name="status" value={formData.status} onChange={handleChange}>
             <option value="todo">To Do</option>
             <option value="in-progress">In Progress</option>
             <option value="done">Done</option>
           </select>
-        </label>
+        
       </div>
 
-      
+      <div className={classes.actions}>
+        <Button
+          variant="secondary"
+          type="button"
+          onClick={() => setMode("view")}
+        >
+          Cancel
+        </Button>
 
-      <button type="submit">{mode === 'edit' ? 'Edit Task' : 'Add Task'}</button>
+        <Button variant="primary" type="submit">
+          {mode === "edit" ? "Save Changes" : "Create Task"}
+        </Button>
+      </div>
 
     </form>
   );

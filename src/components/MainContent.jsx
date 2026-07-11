@@ -1,11 +1,12 @@
 import TaskDetails from "./TaskDetails";
 import { useState } from "react";
 import TaskForm from "./TaskForm";
+import classes from "./MainContent.module.css";
+import Button from "./UI/Button";
 
-const MainContent = ({ tasks, selectedTaskId, onAddTask, onUpdateTask, onDeleteTask }) => {
+const MainContent = ({ tasks, selectedTaskId, onAddTask, onUpdateTask, onDeleteTask, setMode, mode }) => {
   const selectedTask = tasks.find((task) => task.id === selectedTaskId);
 
-  const [mode, setMode] = useState("view");
 
   function openCreateForm() {
     setMode("create");
@@ -29,26 +30,30 @@ const MainContent = ({ tasks, selectedTaskId, onAddTask, onUpdateTask, onDeleteT
 
   if (!selectedTask && mode === 'view') {
     return (
-       <main className="main-content"> 
-       <p>Please select a task from the sidebar.
-          <br/>
-          OR
-          <br/>
-          Click the "Add Task" button to create a new task.
-        </p>
-          <button onClick={openCreateForm}>Add Task</button>
+      <main className={classes.mainContent}>
+        <div className={classes.emptyState}>
+          <h2>No task selected</h2>
+
+          <p>
+            Select a task from the sidebar or create a new one to get started.
+          </p>
+
+          <Button variant="primary" onClick={openCreateForm}>
+            Create Task
+          </Button>
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="main-content">
+    <main className={classes.mainContent}>
       {mode === 'edit' && (
-        <TaskForm mode={mode} task={selectedTask} onSubmit={handleUpdateTask} />
+        <TaskForm mode={mode} task={selectedTask} onSubmit={handleUpdateTask} setMode={setMode} />
       )}
 
       {mode === 'create' && (
-        <TaskForm mode={mode} task={selectedTask} onSubmit={handleCreateTask} />
+        <TaskForm mode={mode} task={selectedTask} onSubmit={handleCreateTask} setMode={setMode} />
       )}
 
       {mode === 'view' && selectedTask && (

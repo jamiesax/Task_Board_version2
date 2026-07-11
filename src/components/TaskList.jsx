@@ -1,7 +1,23 @@
 import TaskItem from "./TaskItem";
 import classes from "./TaskList.module.css";
 
-const TasksList = ({ tasks, onTaskSelect, selectedTaskId }) => {
+const TasksList = ({ tasks, onTaskSelect, selectedTaskId, hasTasks }) => {
+
+  if (tasks.length === 0) {
+  return (
+    <div className={classes.emptyState}>
+      <h3>
+        {hasTasks ? "No tasks found" : "No tasks yet"}
+      </h3>
+
+      <p>
+        {hasTasks
+          ? "No tasks match your current search or filter."
+          : "Create your first task to get started."}
+      </p>
+    </div>
+  );
+}
 
   return (
     <ul className={classes.list}>
