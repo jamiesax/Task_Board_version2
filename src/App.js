@@ -2,7 +2,6 @@ import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import { useState, useEffect } from 'react';
 import './App.css';
-import { tasks as initialTasks } from './data/task.js';
 
 function App() {
   const STORAGE_KEY = "task-board-v2";
